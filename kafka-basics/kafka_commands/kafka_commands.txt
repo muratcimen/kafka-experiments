@@ -1,0 +1,16 @@
+
+//Kafka Topic
+
+murat@ubuntu:~/kafka_2.13-3.0.1/bin$ kafka-topics.sh --create --topic demo_java --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+
+
+//Kafka Server
+
+murat@ubuntu:~/kafka_2.13-3.0.1/bin$ kafka-server-start.sh ~/kafka_2.13-3.0.1/config/kraft/server.properties
+
+
+//Kafka Consumer
+
+murat@ubuntu:~/kafka_2.13-3.0.1/bin$ kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic demo_java --from-beginning
+
+
