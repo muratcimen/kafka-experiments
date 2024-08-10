@@ -1,27 +1,20 @@
-<<<<<<< HEAD
-  GNU nano 7.2                                                                                    .gitignore
+# IDE-specific files and directories
 .idea/
+*.iws
+*.iml
+*.ipr
+out/
+.vscode/
+.DS_Store
 
-
-.gradle
+# Gradle files and directories
+.gradle/
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
-*.iml
-*.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-
-### Eclipse ###
+# Eclipse files and directories
 .apt_generated
 .classpath
 .factorypath
@@ -33,15 +26,9 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
-### NetBeans ###
+# NetBeans files and directories
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-
-### VS Code ###
-.vscode/
-
-### Mac OS ###
-.DS_Store
