@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+  GNU nano 7.2                                                                                    .gitignore
+.idea/
+
+
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
