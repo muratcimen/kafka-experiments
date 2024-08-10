@@ -1,4 +1,4 @@
-  GNU nano 7.2                                                                                    .gitignore
+GNU nano 7.2                                                                                    .gitignore
 .idea/
 
 
@@ -42,12 +42,6 @@
 
 
 
-
-
-
-
-
-
   GNU nano 7.2                                                                                    .gitignore
 
 
@@ -118,3 +112,47 @@
 ^X Exit         ^R Read File    ^\ Replace      ^U Paste        ^J Justify      ^/ Go To Line   M-E Redo        M-6 Copy        ^Q Where Was    M-W Next        ^F Forward      ^▸ Next Word
 
 
+=======
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+>>>>>>> dev-kafka
