@@ -19,19 +19,9 @@ public class ProducerDemoWithCallback {
         Properties properties = new Properties();
         // connect to Localhost or Remote Server
         properties.setProperty("bootstrap.servers", "127.0.0.1:9092");
-
-        // Uncomment the following lines if using SASL_SSL
-        // properties.setProperty("security.protocol", "SASL_SSL");
-        // properties.setProperty("sasl.jaas.config",
-        //         "org.apache.kafka.common.security.plain.PlainLoginModule required " +
-        //         "username=\"<murat>\" " +
-        //         "password=\"<Mrt9807.>\";");
-        // properties.setProperty("sasl.mechanism", "PLAIN");
-
         // set producer properties
         properties.setProperty("key.serializer", StringSerializer.class.getName());
         properties.setProperty("value.serializer", StringSerializer.class.getName());
-
         //properties.setProperty("batch.size", "400");
         //properties.setProperty("partitioner.class", RoundRobinPartitioner.class.getName());
 
