@@ -1,16 +1,21 @@
 
 //Kafka Topic
 
-murat@ubuntu:~/kafka_2.13-3.0.1/bin$ kafka-topics.sh --create --topic demo_java --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+murat@ubuntu:~/kafka_2.13-3.1.0/bin$ kafka-topics.sh --create --topic demo_java --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
 
 
 //Kafka Server
 
-murat@ubuntu:~/kafka_2.13-3.0.1/bin$ kafka-server-start.sh ~/kafka_2.13-3.0.1/config/kraft/server.properties
-
+murat@ubuntuserver:~/kafka_2.13-3.1.0/bin$ kafka-storage.sh format -t $(kafka-storage.sh random-uuid) -c ~/kafka_2.13-3.1.0/config/kraft/server.properties
+murat@ubuntuserver:~/kafka_2.13-3.1.0/bin$ kafka-server-start.sh ~/kafka_2.13-3.1.0/config/kraft/server.properties
 
 //Kafka Consumer
 
-murat@ubuntu:~/kafka_2.13-3.0.1/bin$ kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic demo_java --from-beginning
+murat@ubuntu:~/kafka_2.13-3.1.0/bin$ kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic demo_java --from-beginning
 
 
+//Partition sayısını konrol etme
+kafka-topics.sh --describe --topic demo_java --bootstrap-server localhost:9092
+
+//Partition sayısını arttırma
+kafka-topics.sh --alter --topic demo_java --partitions 3 --bootstrap-server localhost:9092
