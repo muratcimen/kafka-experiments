@@ -1,7 +1,8 @@
-package com.muratcimen.kafka;
+package com.muratcimen.kafka.basics;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.CooperativeStickyAssignor;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.errors.WakeupException;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -12,9 +13,9 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.Properties;
 
-public class ConsumerDemoWithShutDown {
+public class ConsumerDemoCooperative {
 
-    private static final Logger log = LoggerFactory.getLogger(ConsumerDemoWithShutDown.class.getSimpleName());
+    private static final Logger log = LoggerFactory.getLogger(ConsumerDemoCooperative.class.getSimpleName());
 
     public static void main(String[] args) {
         log.info("I am a Kafka Consumer");
@@ -24,21 +25,25 @@ public class ConsumerDemoWithShutDown {
 
         // create Producer Properties
         Properties properties = new Properties();
+
         // connect to Localhost
         properties.setProperty("bootstrap.servers", "localhost:9092");
+
         //connect to Remote Server
-//      properties.setProperty("security.protocol","SASL_SSL");
-//      properties.setProperty("sasl.jaas.config","");
-//      properties.setProperty("sasl.mechanism","PLAIN");
+        //properties.setProperty("security.protocol", "SASL_SSL");
+        //properties.setProperty("sasl.jaas.config", "");
+        //properties.setProperty("sasl.mechanism", "PLAIN");
 
         //create consumer configs
         properties.setProperty("key.deserializer", StringDeserializer.class.getName());
         properties.setProperty("value.deserializer", StringDeserializer.class.getName());
         properties.setProperty("group.id", groupId);
         properties.setProperty("auto.offset.reset", "earliest"); //"none/earliest/latest"
+        properties.setProperty("partition.assignment.strategy", CooperativeStickyAssignor.class.getName());
+        //properties.setProperty("group.instance.id","....");//strategy for static assignment
 
         //create a consumer
-        KafkaConsumer<String,String> consumer = new KafkaConsumer<>(properties);
+        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(properties);
 
         //get a referance to the main thread
         final Thread mainThread = Thread.currentThread();
@@ -53,7 +58,7 @@ public class ConsumerDemoWithShutDown {
                 try {
                     mainThread.join();
                 } catch (InterruptedException e) {
-                   e.printStackTrace();
+                    e.printStackTrace();
                 }
             }
         });
@@ -73,7 +78,7 @@ public class ConsumerDemoWithShutDown {
                     log.info("Key: " + record.key() + ", Value: " + record.value());
                     log.info("Partition: " + record.partition() + ", Offset: " + record.offset());
                 }
-               // i++;
+                // i++;
 //                if(i == 10) {
 //                    System.exit(0);
 //                }
