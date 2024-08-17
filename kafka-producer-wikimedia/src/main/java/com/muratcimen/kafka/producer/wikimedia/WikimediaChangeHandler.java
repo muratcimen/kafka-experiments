@@ -1,4 +1,4 @@
-package com.muratcimen.kafka;
+package com.muratcimen.kafka.producer.wikimedia;
 
 import com.launchdarkly.eventsource.EventHandler;
 import com.launchdarkly.eventsource.MessageEvent;
